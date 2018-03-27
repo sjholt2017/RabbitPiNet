@@ -1,8 +1,8 @@
 ####################################################################################
 #
 # Program: topProc
-# Version: 1.0
-# Date: 31/01/2018
+# Version: 1.1
+# Date: 27/03/2018
 #
 # Description: Checks the top running process and sends the details to the RabbiMQ 
 # server (PiRMQ01)
@@ -53,7 +53,7 @@ messageDatetime = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%
 # Create message text
 messageType = "INFO"
 messageBody = "Top Process >> Server: " + server_name + " >> Process:" + topProc
-messageText = "[" + messageType + "] " + messageBody + " @ " + messageDatetime
+messageText = messageDatetime + " [" + messageType + "] " + messageBody
 messageText2 = "INSERT INTO rabbitpimessagelog (message_type, message_body, message_datetime) VALUES ('" + messageType + "','" + messageBody + "','" +  messageDatetime + "');"
 
 #print messageText
