@@ -1,8 +1,8 @@
 ####################################################################################
 #
 # Program: alert
-# Version: 1.0
-# Date: 31/01/2018
+# Version: 1.1
+# Date: 27/03/2018
 #
 # Description: Receives details of alert messages from the current server and sends
 # this information to the RabbitMQ server (PiRMQ01)
@@ -47,7 +47,7 @@ ts = time.time()
 messageDatetime = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
 
 # Create message text for RabbitPi and NodeRed
-messageText = "[" + messageType + "] " + messageBody + " @ " + messageDatetime
+messageText = messageDatetime + " [" + messageType + "] " + messageBody
 messageText2 = "INSERT INTO rabbitpimessagelog (message_type, message_body, message_datetime) VALUES ('" + messageType + "','" + messageBody + "','" + messageDatetime + "');"
 
 # Publish message to RabbitMQ Listener (RabbitMQ PiCloud queue)
