@@ -1,8 +1,8 @@
 ####################################################################################
 #
 # Program: heartbeat
-# Version: 1.0
-# Date: 31/01/2018
+# Version: 1.1
+# Date: 27/03/2018
 #
 # Description: Sends an 'heartbeat' message to the RabbitMQ server (PiRMQ01)
 #
@@ -47,7 +47,7 @@ ts = time.time()
 messageDatetime = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
 
 # Create message for Online Queue Monitor
-messageText = "[" + messageType + "] " + messageBody + " @ " +  messageDatetime
+messageText = messageDatetime + " [" + messageType + "] " + messageBody
 
 # Create messages for MySQL Database
 messageText2 = "INSERT INTO rabbitpimessagelog (message_type, message_body, message_datetime) VALUES ('" + messageType + "','" + messageBody + "','" + messageDatetime + "');"
