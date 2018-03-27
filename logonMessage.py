@@ -1,8 +1,8 @@
 ####################################################################################
 #
 # Program: logonMessage
-# Version: 1.0
-# Date: 31/01/2018
+# Version: 1.1
+# Date: 27/03/2018
 #
 # Description: Sends the details of the logon id to the RabbitMQ server (PiRMQ01)
 #
@@ -49,7 +49,7 @@ messageDatetime = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%
 # Create message text
 messageType = "WARN"
 messageBody = "Logon >> Server: " + server_name + " >> ID:" + user_id
-messageText = "[" + messageType + "] " + messageBody + " @ " + messageDatetime
+messageText = messageDatetime + " [" + messageType + "] " + messageBody
 messageText2 = "INSERT INTO rabbitpimessagelog (message_type, message_body, message_datetime) VALUES ('" + messageType + "','" + messageBody + "','" +  messageDatetime + "');"
 
 # Publish message to RabbitMQ listener (RabbitMQ PiCloud queue)
