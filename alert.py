@@ -1,7 +1,7 @@
 ####################################################################################
 #
 # Program: alert
-# Version: 1.1
+# Version: 1.2
 # Date: 27/03/2018
 #
 # Description: Receives details of alert messages from the current server and sends
@@ -71,6 +71,6 @@ mq_chan.basic_publish(
 
 # Send any ALRT message to the general slack channel
 if messageType == 'ALRT':
-	cmd = '$RabbitMQDIR/slackpost.sh "system_monitor" "' + messageText + '"'
+	cmd = '/home/pi/RabbitPiNet/slackpost.sh "system_monitor" "' + messageText + '"'
 	os.system(cmd)
 
