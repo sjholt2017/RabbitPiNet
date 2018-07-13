@@ -2,7 +2,7 @@
 #
 # Program: alert
 # Version: 1.2
-# Date: 27/03/2018
+# Date: 13/07/2018
 #
 # Description: Receives details of alert messages from the current server and sends
 # this information to the RabbitMQ server (PiRMQ01)
@@ -22,7 +22,7 @@ mq_creds  = pika.PlainCredentials(
 
 # Use localhost
 mq_params = pika.ConnectionParameters(
-    host         = "sjholt.webhop.me",
+    host         = "192.168.1.200",
     credentials  = mq_creds,
     virtual_host = "/")
 
@@ -71,6 +71,6 @@ mq_chan.basic_publish(
 
 # Send any ALRT message to the general slack channel
 if messageType == 'ALRT':
-	cmd = '/home/pi/RabbitPiNet/slackpost.sh "system_monitor" "' + messageText + '"'
+	cmd = '$RabbitMQDIR/slackpost.sh "system_monitor" "' + messageText + '"'
 	os.system(cmd)
 

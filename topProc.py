@@ -1,8 +1,8 @@
 ####################################################################################
 #
 # Program: topProc
-# Version: 1.1
-# Date: 27/03/2018
+# Version: 1.2
+# Date: 13/07/2018
 #
 # Description: Checks the top running process and sends the details to the RabbiMQ 
 # server (PiRMQ01)
@@ -27,7 +27,7 @@ mq_creds  = pika.PlainCredentials(
 
 # Use localhost
 mq_params = pika.ConnectionParameters(
-    host         = "sjholt.webhop.me",
+    host         = "192.168.1.200",
     credentials  = mq_creds,
     virtual_host = "/")
 
