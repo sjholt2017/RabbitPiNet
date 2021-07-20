@@ -22,8 +22,8 @@ mq_creds  = pika.PlainCredentials(
 
 # Use localhost
 mq_params = pika.ConnectionParameters(
-#    host         = "192.168.1.200",
-    host         = "sjholt.webhop.me",
+    host         = "192.168.1.200",
+#    host         = "sjholt.webhop.me",
     credentials  = mq_creds,
     virtual_host = "/")
 
